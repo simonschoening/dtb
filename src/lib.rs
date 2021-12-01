@@ -152,6 +152,10 @@ impl<'a> Dtb<'a> {
 		})
 	}
 
+	pub fn get_length(&self) -> usize {
+        u32::from_be(self.header.totalsize) as usize
+	}
+
 	pub fn enum_subnodes<'b>(&self, path: &'b str) -> EnumSubnodesIter<'a, 'b> {
 		assert!(path.len() > 0);
 
